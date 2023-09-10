@@ -1,4 +1,5 @@
-module "test" {
+module "roboshop_instances" {
   source = "git::https://github.com/sairm21/terraform-module-app.git"
-  env = var.env
+  component = each.key
+  env =var.env
 }
