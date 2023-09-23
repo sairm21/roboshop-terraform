@@ -35,3 +35,11 @@ components= {
     tags = { Monitor = "True", Env = "Dev"}
   }
 }
+
+tags={
+  Company-name="SRK India Pvt Ltd.,"
+  Business="ecommerce"
+  Business-unit="Retail"
+  center_ID= "45872"
+  Project_name= "Roboshop"
+}
