@@ -37,9 +37,9 @@ components= {
 }
 
 tags={
-  Company-name="SRK India Pvt Ltd.,"
+  Company_name="SRK India Pvt Ltd.,"
   Business="ecommerce"
-  Business-unit="Retail"
+  Business_unit="Retail"
   center_ID= "45872"
   Project_name= "Roboshop"
 }
