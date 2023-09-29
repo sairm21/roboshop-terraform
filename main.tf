@@ -11,5 +11,7 @@ module "roboshop_VPC" {
   source = "git::https://github.com/sairm21/tf-vpc-module.git"
   for_each = var.VPC
   cidr_block = each.value["cidr_block"]
+  subnets = each.value["subnets"]
   env =var.env
+  tags = var.tags
 }
