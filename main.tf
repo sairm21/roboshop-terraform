@@ -14,4 +14,5 @@ module "roboshop_VPC" {
   subnets = each.value["subnets"]
   env =var.env
   tags = var.tags
+  default_VPC_id = var.default_VPC_id # this argument will be passed to module
 }

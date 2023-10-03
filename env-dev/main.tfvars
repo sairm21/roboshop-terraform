@@ -64,3 +64,7 @@ VPC = {
     }
   }
 }
+
+default_VPC_id = {
+  default = "vpc-e6e0959b"
+}
