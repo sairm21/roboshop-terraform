@@ -26,6 +26,6 @@ module "appserver" {
 
 }*/
 
-output "subnet_is" {
+output "subnet_id" {
   value = module.roboshop_VPC
 }
