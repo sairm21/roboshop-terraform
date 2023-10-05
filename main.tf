@@ -16,3 +16,16 @@ module "roboshop_VPC" {
   tags = var.tags
   default_VPC_id = var.default_VPC_id # this argument will be passed to module
 }
+
+/*
+module "appserver" {
+  source = "git::https://github.com/sairm21/terraform-module-app.git"
+  component = "test"
+  env =var.env
+  tags = var.tags
+
+}*/
+
+output "subnet_is" {
+  value = module.roboshop_VPC
+}
