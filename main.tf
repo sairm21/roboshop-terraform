@@ -17,11 +17,11 @@ module "roboshop_VPC" {
   default_VPC_id = var.default_VPC_id # this argument will be passed to module
 }
 
-/*
 module "appserver" {
-  source = "git::https://github.com/sairm21/terraform-module-app.git"
+  source    = "git::https://github.com/sairm21/terraform-module-app.git"
   component = "test"
-  env =var.env
-  tags = var.tags
-
-}*/
+  env       = var.env
+  tags      = var.tags
+  vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
+  subnet_id = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "app", null), "subnet_id", null)[0]
+}
