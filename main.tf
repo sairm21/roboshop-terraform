@@ -15,6 +15,7 @@ module "roboshop_VPC" {
   env =var.env
   tags = var.tags
   default_VPC_id = var.default_VPC_id # this argument will be passed to module
+  default_Route_table_ID = var.default_Route_table_ID
 }
 
 module "appserver" {

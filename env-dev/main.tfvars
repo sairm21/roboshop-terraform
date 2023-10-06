@@ -66,3 +66,4 @@ VPC = {
 }
 
 default_VPC_id = "vpc-e6e0959b"
+default_Route_table_ID = "rtb-8d8a79fc"
