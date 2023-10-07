@@ -29,7 +29,7 @@ module "appserver" {
 }*/
 
 module "rabbitmq" {
-  source = "git::https://github.com/sairm21/tf-rds-module.git"
+  source = "git::https://github.com/sairm21/tf-rabbitmq-module.git"
 
   for_each = var.rabbitmq
   component = each.value["component"]
