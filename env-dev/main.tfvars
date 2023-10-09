@@ -71,7 +71,7 @@ bastion_host = ["172.31.7.59/32"]
 
 rabbitmq = {
   main = {
-    component = "rabbitmq"
+    component = "RabbitMQ"
     instance_type = "t3.small"
   }
 }
