@@ -43,4 +43,5 @@ module "rabbitmq" {
   tags = var.tags
 
   bastion_host = var.bastion_host
+  zone_id = var.zone_id
 }
