@@ -76,3 +76,12 @@ rabbitmq = {
     instance_type = "t3.small"
   }
 }
+
+rds = {
+  main = {
+    component      = "MySQL"
+    engine         = "aurora-mysql"
+    engine_version = "5.7.mysql_aurora.2.11.3"
+    database_name  = "mydb"
+  }
+}

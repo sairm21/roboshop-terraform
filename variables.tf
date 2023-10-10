@@ -7,3 +7,4 @@ variable "default_Route_table_ID" {}
 variable "rabbitmq" {}
 variable "bastion_host" {}
 variable "zone_id" {}
+variable "rds" {}
