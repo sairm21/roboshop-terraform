@@ -41,11 +41,13 @@ module "rabbitmq" {
 
   env = var.env
   tags = var.tags
+  kms_key_id = var.kms_key_id
 
   bastion_host = var.bastion_host
   zone_id = var.zone_id
 }
 
+/*
 module "rds" {
   source = "git::https://github.com/sairm21/tf-rds-module.git"
 
@@ -58,5 +60,5 @@ module "rds" {
   subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
   tags = var.tags
 
-
 }
+*/

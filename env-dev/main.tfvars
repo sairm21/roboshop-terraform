@@ -85,3 +85,5 @@ rds = {
     database_name  = "mydb"
   }
 }
+
+kms_key_id = "arn:aws:kms:us-east-1:804838709963:key/7123afc2-b40f-4051-8098-22eef643474b"
