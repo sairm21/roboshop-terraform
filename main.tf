@@ -56,6 +56,8 @@ module "rds" {
   engine = each.value["engine"]
   engine_version = each.value["engine_version"]
   database_name = each.value["database_name"]
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
   subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
 
   tags = var.tags
