@@ -18,7 +18,7 @@ module "roboshop_VPC" {
   default_Route_table_ID = var.default_Route_table_ID
 }
 
-/*
+
 module "appserver" {
   source    = "git::https://github.com/sairm21/terraform-module-app.git"
   component = "test"
@@ -26,7 +26,7 @@ module "appserver" {
   tags      = var.tags
   vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
   subnet_id = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "app", null), "subnet_id", null)[0]
-}*/
+}
 
 module "rabbitmq" {
   source = "git::https://github.com/sairm21/tf-rabbitmq-module.git"
