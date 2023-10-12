@@ -59,7 +59,7 @@ module "rds" {
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
   subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
-  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "db", null), "cidr_block", null)
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "app", null), "cidr_block", null)
   vpc_id = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
 
   tags = var.tags
