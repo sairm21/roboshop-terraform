@@ -65,6 +65,5 @@ module "rds" {
   tags = var.tags
   env = var.env
   kms_key_id = var.kms_key_id
-  aws_db_subnet_group_tags = merge({ Name = "${var.env}-${var.components}-SG" }, var.tags)
 
 }
