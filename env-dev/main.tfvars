@@ -91,11 +91,10 @@ rds = {
 documentdb = {
   main = {
     component      = "mongodb"
-    engine         = "aurora-mysql"
-    engine_version = "5.7.mysql_aurora.2.11.3"
-    database_name  = "mydb"
-    instance_count = 1
-    instance_class = "db.t3.small"
+    engine         = "docdb"
+    engine_version = "4.0.0"
+    db_instance_count = 1
+    db_instance_class = "db.t3.medium"
   }
 }
 
@@ -106,7 +105,7 @@ elasticache ={
     engine_version          = "6.2"
     num_node_groups         = 1
     replicas_per_node_group = 1
-    node_type               = "cache.t2.small"
+    node_type               = "cache.t3.micro"
     parameter_group_name    = "default.redis6.2.cluster.on"
   }
 }

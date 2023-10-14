@@ -66,17 +66,17 @@ module "rds" {
   env = var.env
   kms_key_id = var.kms_key_id
 }
-
+*/
 module "documentdb" {
   source = "git::https://github.com/sairm21/tf-documentdb-module.git"
 
   for_each = var.documentdb
+
   component = each.value["component"]
   engine = each.value["engine"]
   engine_version = each.value["engine_version"]
-  database_name = each.value["database_name"]
-  instance_count = each.value["instance_count"]
-  instance_class = each.value["instance_class"]
+  db_instance_count = each.value["db_instance_count"]
+  db_instance_class  = each.value["db_instance_class"]
 
   subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "app", null), "cidr_block", null)
@@ -86,7 +86,7 @@ module "documentdb" {
   env = var.env
   kms_key_id = var.kms_key_id
 }
-*/
+
 module "elasticache" {
   source = "git::https://github.com/sairm21/tf-elasticache-module.git"
 
