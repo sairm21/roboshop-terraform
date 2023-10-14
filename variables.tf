@@ -9,3 +9,5 @@ variable "bastion_host" {}
 variable "zone_id" {}
 variable "rds" {}
 variable "kms_key_id" {}
+variable "documentdb" {}
+variable "elasticache" {}

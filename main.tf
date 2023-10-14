@@ -18,7 +18,7 @@ module "roboshop_VPC" {
   default_Route_table_ID = var.default_Route_table_ID
 }
 
-
+/*
 module "appserver" {
   source    = "git::https://github.com/sairm21/terraform-module-app.git"
   component = "test"
@@ -58,6 +58,47 @@ module "rds" {
   database_name = each.value["database_name"]
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
+  subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "app", null), "cidr_block", null)
+  vpc_id = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
+
+  tags = var.tags
+  env = var.env
+  kms_key_id = var.kms_key_id
+}
+
+module "documentdb" {
+  source = "git::https://github.com/sairm21/tf-documentdb-module.git"
+
+  for_each = var.documentdb
+  component = each.value["component"]
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  database_name = each.value["database_name"]
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+
+  subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "app", null), "cidr_block", null)
+  vpc_id = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
+
+  tags = var.tags
+  env = var.env
+  kms_key_id = var.kms_key_id
+}
+*/
+module "elasticache" {
+  source = "git::https://github.com/sairm21/tf-elasticache-module.git"
+
+  for_each = var.elasticache
+  component = each.value["component"]
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  num_node_groups = each.value["num_node_groups"]
+  replicas_per_node_group = each.value["replicas_per_node_group"]
+  node_type = each.value["node_type"]
+  parameter_group_name = each.value["parameter_group_name"]
+
   subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "db", null), "subnet_id", null)
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), "app", null), "cidr_block", null)
   vpc_id = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
