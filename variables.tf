@@ -11,3 +11,4 @@ variable "rds" {}
 variable "kms_key_id" {}
 variable "documentdb" {}
 variable "elasticache" {}
+variable "alb" {}

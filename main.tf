@@ -66,7 +66,7 @@ module "rds" {
   env = var.env
   kms_key_id = var.kms_key_id
 }
-*/
+
 module "documentdb" {
   source = "git::https://github.com/sairm21/tf-documentdb-module.git"
 
@@ -106,4 +106,23 @@ module "elasticache" {
   tags = var.tags
   env = var.env
   kms_key_id = var.kms_key_id
+}
+*/
+
+module "alb" {
+  source = "git::https://github.com/sairm21/tf-alb-module.git"
+
+  for_each = var.alb
+
+  name = each.value["name"]
+  internal = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+
+  vpc_id = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
+  sg_subnet_cidr = each.value["name"] == "Public" ? [0.0.0.0/0] : local.app_web_subnet_cidr
+  subnet_ids = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), each.value["subnet_ref"], null), "subnet_id", null)
+
+  tags = var.tags
+  env= var.env
+
 }

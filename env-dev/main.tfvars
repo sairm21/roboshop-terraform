@@ -110,4 +110,19 @@ elasticache ={
   }
 }
 
+alb = {
+  public = {
+    name = "Public"
+    internal = false
+    load_balancer_type = "application"
+    subnets_ref = "Public"
+  }
+  private = {
+    name = "Private"
+    internal = true
+    load_balancer_type = "application"
+    subnets_ref = "app"
+  }
+}
+
 kms_key_id = "arn:aws:kms:us-east-1:804838709963:key/7123afc2-b40f-4051-8098-22eef643474b"
