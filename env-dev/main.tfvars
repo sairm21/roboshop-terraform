@@ -37,7 +37,7 @@ components= {
 }
 
 tags={
-  Company_name="SRK India Pvt Ltd.,"
+  Company_name="SRK India Pvt Ltd."
   Business="ecommerce"
   Business_unit="Retail"
   center_ID= "45872"
