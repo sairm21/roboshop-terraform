@@ -19,15 +19,6 @@ module "roboshop_VPC" {
 }
 
 /*
-module "appserver" {
-  source    = "git::https://github.com/sairm21/terraform-module-app.git"
-  component = "test"
-  env       = var.env
-  tags      = var.tags
-  vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
-  subnet_id = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), "app", null), "subnet_id", null)[0]
-}
-
 module "rabbitmq" {
   source = "git::https://github.com/sairm21/tf-rabbitmq-module.git"
 
@@ -107,7 +98,7 @@ module "elasticache" {
   env = var.env
   kms_key_id = var.kms_key_id
 }
-*/
+
 
 module "alb" {
   source = "git::https://github.com/sairm21/tf-alb-module.git"
@@ -126,3 +117,24 @@ module "alb" {
   env= var.env
 
 }
+*/
+module "apps" {
+  source    = "git::https://github.com/sairm21/terraform-module-app.git"
+
+  for_each = var.apps
+  component = each.value["component"]
+  app_port = each.value["app_port"]
+  instance_type = each.value["instance_type"]
+  min_size = each.value["min_size"]
+  max_size = each.value["max_size"]
+  desired_capacity = each.value["desired_capacity"]
+
+  env       = var.env
+  tags      = var.tags
+  kms_key_id = var.kms_key_id
+
+  sg_subnets_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), each.value["subnets_ref"], null), "cidr_block", null)
+  vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
+  subnets = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), each.value["subnets_ref"], null), "subnet_id", null)
+}
+

@@ -125,4 +125,16 @@ alb = {
   }
 }
 
+apps = {
+  cart = {
+    component = "cart"
+    app_port = 8080
+    instance_type = "t3.micro"
+    min_size = 1
+    max_size = 2
+    desired_capacity = 1
+    subnets_ref = "app"
+  }
+}
+
 kms_key_id = "arn:aws:kms:us-east-1:804838709963:key/7123afc2-b40f-4051-8098-22eef643474b"
