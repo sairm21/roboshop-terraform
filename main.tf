@@ -132,6 +132,7 @@ module "apps" {
   env       = var.env
   tags      = var.tags
   kms_key_id = var.kms_key_id
+  bastion_host = var.bastion_host
 
   sg_subnets_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), each.value["subnets_ref"], null), "cidr_block", null)
   vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
