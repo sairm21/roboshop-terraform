@@ -134,6 +134,7 @@ apps = {
     max_size = 2
     desired_capacity = 1
     subnets_ref = "app"
+    lb_ref = "Private"
   }
 }
 
