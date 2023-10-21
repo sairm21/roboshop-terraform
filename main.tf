@@ -18,7 +18,7 @@ module "roboshop_VPC" {
   default_Route_table_ID = var.default_Route_table_ID
 }
 
-/*
+
 module "rabbitmq" {
   source = "git::https://github.com/sairm21/tf-rabbitmq-module.git"
 
@@ -98,7 +98,7 @@ module "elasticache" {
   env = var.env
   kms_key_id = var.kms_key_id
 }
-*/
+
 
 module "alb" {
   source = "git::https://github.com/sairm21/tf-alb-module.git"
