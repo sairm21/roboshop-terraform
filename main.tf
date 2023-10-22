@@ -134,7 +134,7 @@ module "apps" {
   kms_key_id = var.kms_key_id
   bastion_host = var.bastion_host
 
-  sg_subnets_cidr = lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), each.value["subnets_ref"], null), "cidr_block", null)
+  sg_subnets_cidr = each.value["component"] == "frontend" ? local.public_web_subnet_cidr : lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), each.value["subnets_ref"], null), "cidr_block", null)
   vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
   subnets = lookup(lookup(lookup(lookup(module.roboshop_VPC, "main", null), "subnet_id", null), each.value["subnets_ref"], null), "subnet_id", null)
   lb_dns_name = lookup(lookup(module.alb, each.value["lb_ref"], null), "lb_dns_name", null)
