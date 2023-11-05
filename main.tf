@@ -133,6 +133,7 @@ module "apps" {
   tags      = var.tags
   kms_key_id = var.kms_key_id
   bastion_host = var.bastion_host
+  kms_key_id = var.kms_key_id
 
   sg_subnets_cidr = each.value["component"] == "frontend" ? local.public_web_subnet_cidr : lookup(lookup(lookup(lookup(var.VPC, "main", null), "subnets", null), each.value["subnets_ref"], null), "cidr_block", null)
   vpc_id    = lookup(lookup(module.roboshop_VPC, "main", null), "vpc_id", null)
