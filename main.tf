@@ -128,6 +128,7 @@ module "apps" {
   max_size = each.value["max_size"]
   desired_capacity = each.value["desired_capacity"]
   lb_rule_priority = each.value["lb_rule_priority"]
+  param_access = try(each.value["param_access"], [])
 
   env       = var.env
   tags      = var.tags
