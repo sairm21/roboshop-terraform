@@ -35,6 +35,7 @@ module "rabbitmq" {
   kms_key_id = var.kms_key_id
 
   bastion_host = var.bastion_host
+  allow_prometheus = var.allow_prometheus
   zone_id = var.zone_id
 }
 

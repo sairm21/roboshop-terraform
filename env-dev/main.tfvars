@@ -69,6 +69,7 @@ default_VPC_id = "vpc-e6e0959b"
 default_Route_table_ID = "rtb-8d8a79fc"
 bastion_host = ["172.31.7.59/32"]
 zone_id = "Z07064001LQWEDMH2WVFL"
+allow_prometheus = ["172.31.16.41/32"]
 
 rabbitmq = {
   main = {
