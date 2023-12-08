@@ -11,7 +11,7 @@ resource "aws_instance" "load_runner" {
     name = "load_runner"
   }
 
-  provisioner "remote-exec" {
+/*  provisioner "remote-exec" {
     connection {
       user = "centos"
       password = "DevOps321"
@@ -22,4 +22,4 @@ resource "aws_instance" "load_runner" {
       "sudo docker pull roboshop/rs-load:latest"
     ]
   }
-}
+}*/
