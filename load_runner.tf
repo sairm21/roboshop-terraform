@@ -21,5 +21,5 @@ resource "aws_instance" "load_runner" {
     "sudo labauto docker",
       "sudo docker pull roboshop/rs-load:latest"
     ]
-  }
-}*/
+  }*/
+}
