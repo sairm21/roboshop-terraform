@@ -8,7 +8,7 @@ resource "aws_instance" "load_runner" {
   instance_type = "t3.medium"
   vpc_security_group_ids = ["sg-07010737da7cff878"]
   tags = {
-    name = "load_runner"
+    Name = "load_runner"
   }
 
 /*  provisioner "remote-exec" {
