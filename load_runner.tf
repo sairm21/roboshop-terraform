@@ -11,15 +11,15 @@ resource "aws_instance" "load_runner" {
     Name = "load_runner"
   }
 
-/*  provisioner "remote-exec" {
+  provisioner "remote-exec" {
     connection {
       user = "centos"
       password = "DevOps321"
       host = self.public_ip
     }
     inline = [
-    "sudo labauto docker",
-      "sudo docker pull roboshop/rs-load:latest"
+      "sudo curl https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/docker/install.sh | bash",
+      "sudo docker pull robotshop/rs-load:latest"
     ]
-  }*/
+  }
 }
