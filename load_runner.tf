@@ -19,7 +19,7 @@ resource "aws_instance" "load_runner" {
       host = self.public_ip
     }
     inline = [
-      "sudo curl https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/docker/install.sh | bash",
+      "sudo curl https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/docker/install.sh | sudo bash",
       "sudo docker pull robotshop/rs-load:latest"
     ]
   }
